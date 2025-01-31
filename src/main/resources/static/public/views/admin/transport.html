@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="/public/css/qb-common.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/qb-admin-dc.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/qb-utils-flex.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/qb-utils-io.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/qb-utils.css">
+    
+    <script src="/public/scripts/admin/buttons.js" defer></script>
+
+    <title>Transport</title>
+</head>
+
+<body>
+    <?php include_once __DIR__ . '/../logo.html';?>
+    <?php include_once __DIR__ . '/navigation-bar.html';?>
+    <div id="content" class="grid-row-080r-auto">
+        <div id="add-content" class="flex-ccc">
+            <form class="transport-form flex-ccc" action="/admin/transport" method="POST">
+                <input type="text" id="transport-type" class="qb-input-1" name="transport-type" placeholder="Enter transport type" required>
+                <button type="submit" class="qb-button-1 m-top-010">Add</button>
+            </form>
+        </div>
+        <div id="display-content" class="flex-csc cs-full--080r p-bottom-010">
+            <?php foreach($items as $item): ?>
+                <div class="transport-type flex-rcc m-top-005">
+                    <div><?= $item->getTransportTypeId(); ?></div>
+                    <div><?= $item->getTransportTypeName(); ?></div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+</body>
+
+</html>

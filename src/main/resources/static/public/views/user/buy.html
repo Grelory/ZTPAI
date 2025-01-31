@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" type="text/css" href="/public/css/qb-common.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/qb-utils-flex.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/qb-utils-io.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/qb-utils.css">
+
+    <script src="/public/scripts/user/buttons.js" defer></script>
+    <script src="/public/scripts/user/tickets-to-buy.js" defer></script>
+
+    <title>Buy</title>
+</head>
+
+<body>
+    <?php include_once __DIR__ . '/../logo.html';?>
+    <?php include_once __DIR__ . '/navigation-bar.html';?>
+    <div id="content" class="flex-ccc">
+        <form class="ticket-form flex-ccc flex-gap-005 cs-full" action="/user/buy" method="POST">
+            <label for="provider" class="qb-label-1">Provider:</label>
+            <select id="provider" class="qb-select-1" name="provider" required>
+                <option value="">Select</option>
+            </select>
+
+
+            <label for="location" class="qb-label-1">Location:</label>
+            <select id="location" class="qb-select-1" name="location" required>
+                <option value="">Select</option>
+            </select>
+    
+            <label for="transport-type" class="qb-label-1">Transport Type:</label>
+            <select id="transport-type" class="qb-select-1" name="transport-type" required>
+                <option value="">Select</option>
+            </select>
+    
+            <label for="ticket-type" class="qb-label-1">Ticket Type:</label>
+            <select id="ticket-type" class="qb-select-1" name="ticket-type" required>
+                <option value="">Select</option>
+            </select>
+    
+            <button type="submit" class="qb-button-1 m-top-010">Buy Ticket</button>
+        </form>
+    </div>
+</body>
+
+</html>

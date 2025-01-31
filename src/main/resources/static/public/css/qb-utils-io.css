@@ -1,0 +1,79 @@
+.qb-label-1 {
+    font-size: 1rem;
+    text-align: center;
+    color: white;
+}
+
+
+.qb-select-1 {
+    background: transparent;
+    width: 15rem;
+    border: 1px solid white;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border-radius: 2rem;
+    text-align: center;
+    color: white;
+}
+
+.qb-input-1 {
+    background: transparent;
+    width: 20rem;
+}
+
+.qb-button-1 {
+    background-color: black;
+    width: 10rem;
+}
+
+.qb-input-1, .qb-button-1 {
+    border: 1px solid white;
+    padding: 1rem;
+    font-size: 1rem;
+    border-radius: 2rem;
+    text-align: center;
+    color: white;
+}
+
+
+.qb-icon-1 {
+    border: 1px solid white;
+    background-color: black;
+    padding: 1rem;
+    font-size: 1rem;
+    border-radius: 1rem;
+    text-align: center;
+    color: white;
+}
+
+.qb-button-1:hover, .qb-icon-1:hover {
+    background-color: gray;
+}
+
+
+@media screen and (max-width: 500px) {
+    .qb-input-1 {
+        width: calc(100% - 50px);
+    }
+
+    .qb-button-1 {
+        width: 8rem;
+    }
+    
+    .qb-input-1, .qb-button-1 {
+        padding: 0.8rem;
+        font-size: 0.8rem;
+        border-radius: 1.6rem;
+    }
+
+    .qb-label-1, .qb-select-1 {
+        font-size: 0.8rem;
+    }
+
+    .qb-select-1 {
+        width: 10rem;
+        padding: 0.2rem;
+        font-size: 0.8rem;
+        border-radius: 1.6rem;
+    }
+}
