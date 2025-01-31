@@ -9,15 +9,15 @@
     <link rel="stylesheet" type="text/css" href="/public/css/qb-utils-flex.css">
     <link rel="stylesheet" type="text/css" href="/public/css/qb-utils.css">
     <link rel="stylesheet" type="text/css" href="/public/css/qb-tickets.css">
-        
+
     <script src="/public/scripts/user/buttons.js" defer></script>
-    
-    <title>Expired</title>
+
+    <title>Available</title>
 </head>
 
 <body>
-    <?php include_once __DIR__ . '/../logo.html';?>
-    <?php include_once __DIR__ . '/navigation-bar.html';?>
+    <div th:replace="~{logo.html}"></div>
+    <div th:replace="~{admin/navigation-bar.html}"></div>
     <div id="content" class="flex-rcc">
         <div id="tickets" class="flex-rcc flex-wrap flex-gap-010 cs-full">
             <?php foreach($items as $item): ?>

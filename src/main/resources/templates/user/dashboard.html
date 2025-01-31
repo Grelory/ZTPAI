@@ -15,8 +15,8 @@
 </head>
 
 <body>
-    <?php include_once __DIR__ . '/../logo.html';?>
-    <?php include_once __DIR__ . '/navigation-bar.html';?>
+    <div th:replace="~{logo.html}"></div>
+    <div th:replace="~{admin/navigation-bar.html}"></div>
     <div id="content" class="flex-ccc">
         <div id="dashboard-message" class="message flex-ccc">
             <div style="text-align: center;">Hello <?= $name; ?>!</div>

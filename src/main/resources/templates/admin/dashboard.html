@@ -8,20 +8,22 @@
     <link rel="stylesheet" type="text/css" href="/public/css/qb-common.css">
     <link rel="stylesheet" type="text/css" href="/public/css/qb-messages.css">
     <link rel="stylesheet" type="text/css" href="/public/css/qb-utils-flex.css">
-    
+
     <script src="/public/scripts/admin/buttons.js" defer></script>
 
     <title>Admin Dashboard</title>
 </head>
 
 <body>
-    <?php include_once __DIR__ . '/../logo.html';?>
-    <?php include_once __DIR__ . '/navigation-bar.html';?>
+    <div th:replace="~{logo.html}"></div>
+    <div th:replace="~{admin/navigation-bar.html}"></div>
+
     <div id="content" class="flex-ccc">
         <div id="dashboard-message" class="message flex-ccc">
-            <div style="text-align: center;">Hello <?= $name; ?>!</div>
+            <div style="text-align: center;">
+                Hello <span th:text="${name}">User</span>!
+            </div>
         </div>
     </div>
 </body>
-
 </html>

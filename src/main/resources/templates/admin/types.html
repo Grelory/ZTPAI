@@ -17,29 +17,26 @@
 </head>
 
 <body>
-    <?php include_once __DIR__ . '/../logo.html';?>
-    <?php include_once __DIR__ . '/navigation-bar.html';?>
+    <div th:replace="~{logo.html}"></div>
+    <div th:replace="~{admin/navigation-bar.html}"></div>
     <div id="content" class="grid-row-138r-auto">
         <div id="add-content" class="flex-ccc">
             <form class="types-form flex-ccc" action="/admin/types" method="POST">
                 <input type="text" id="ticket-type" class="qb-input-1 m-top-0025" name="ticket-type" placeholder="Enter transport type" required>
                 <input type="number" id="interval-number" class="qb-input-1 m-top-0025" name="interval-number" placeholder="Enter interval" required>
                 <select id="interval-name" class="qb-select-1 m-top-0025" name="interval-name" required>
-                    <?php foreach($intervals as $interval): ?>
-                        <option value="<?= $interval->getIntervalName(); ?>"><?= $interval->getIntervalName(); ?></option>
-                    <?php endforeach; ?>
+                    <option th:each="interval : ${intervals}" th:value="${interval}" th:text="${interval}">Interval Name</option>
                 </select>
                 <button type="submit" class="qb-button-1 m-top-010">Add</button>
             </form>
         </div>
         <div id="display-content" class="flex-csc cs-full--138r p-bottom-010">
-            <?php foreach($types as $type): ?>
-                <div class="ticket-type flex-rcc m-top-005">
-                    <div><?= $type->getTicketTypeId(); ?></div>
-                    <div><?= $type->getTicketTypeName(); ?></div>
-                    <div><?= $type->getTicketTypeExpiryInterval(); ?></div>
-                </div>
-            <?php endforeach; ?>
+            <div th:each="type : ${types}" class="ticket-type flex-rcc m-top-005">
+                <div th:text="${type.ticketTypeId}">Ticket Type ID</div>
+                <div th:text="${type.ticketTypeName}">Ticket Type Name</div>
+                <div th:text="${type.ticketTypeExpiryNumber}">Ticket Type Interval Number</div>
+                <div th:text="${type.ticketTypeExpiryUnit}">Ticket Type Interval Unit</div>
+            </div>
         </div>
     </div>
 </body>

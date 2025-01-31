@@ -17,8 +17,8 @@
 </head>
 
 <body>
-    <?php include_once __DIR__ . '/../logo.html';?>
-    <?php include_once __DIR__ . '/navigation-bar.html';?>
+    <div th:replace="~{logo.html}"></div>
+    <div th:replace="~{admin/navigation-bar.html}"></div>
     <div id="content" class="flex-ccc">
         <form class="ticket-form flex-ccc flex-gap-005 cs-full" action="/user/buy" method="POST">
             <label for="provider" class="qb-label-1">Provider:</label>

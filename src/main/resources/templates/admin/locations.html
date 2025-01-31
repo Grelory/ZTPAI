@@ -17,8 +17,8 @@
 </head>
 
 <body>
-    <?php include_once __DIR__ . '/../logo.html';?>
-    <?php include_once __DIR__ . '/navigation-bar.html';?>
+    <div th:replace="~{logo.html}"></div>
+    <div th:replace="~{admin/navigation-bar.html}"></div>
     <div id="content" class="grid-row-080r-auto">
         <div id="add-content" class="flex-ccc">
             <form class="location-form flex-ccc" action="/admin/locations" method="POST">
@@ -27,12 +27,10 @@
             </form>
         </div>
         <div id="display-content" class="flex-csc cs-full--080r p-bottom-010">
-            <?php foreach($items as $item): ?>
-                <div class="location flex-rcc m-top-005">
-                    <div><?= $item->getLocationId(); ?></div>
-                    <div><?= $item->getLocationName(); ?></div>
-                </div>
-            <?php endforeach; ?>
+            <div th:each="item : ${items}" class="location flex-rcc m-top-005">
+                <div th:text="${item.locationId}">Location ID</div>
+                <div th:text="${item.locationName}">Location Name</div>
+            </div>
         </div>
     </div>
 </body>

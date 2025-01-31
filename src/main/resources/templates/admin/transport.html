@@ -17,22 +17,20 @@
 </head>
 
 <body>
-    <?php include_once __DIR__ . '/../logo.html';?>
-    <?php include_once __DIR__ . '/navigation-bar.html';?>
+    <div th:replace="~{logo.html}"></div>
+    <div th:replace="~{admin/navigation-bar.html}"></div>
     <div id="content" class="grid-row-080r-auto">
         <div id="add-content" class="flex-ccc">
             <form class="transport-form flex-ccc" action="/admin/transport" method="POST">
-                <input type="text" id="transport-type" class="qb-input-1" name="transport-type" placeholder="Enter transport type" required>
+                <input type="text" id="transport" class="qb-input-1" name="transport-type" placeholder="Enter transport type" required>
                 <button type="submit" class="qb-button-1 m-top-010">Add</button>
             </form>
         </div>
         <div id="display-content" class="flex-csc cs-full--080r p-bottom-010">
-            <?php foreach($items as $item): ?>
-                <div class="transport-type flex-rcc m-top-005">
-                    <div><?= $item->getTransportTypeId(); ?></div>
-                    <div><?= $item->getTransportTypeName(); ?></div>
-                </div>
-            <?php endforeach; ?>
+            <div th:each="item : ${items}" class="transport flex-rcc m-top-005">
+                <div th:text="${item.transportTypeId}">Transport Type ID</div>
+                <div th:text="${item.transportTypeName}">Transport Type Name</div>
+            </div>
         </div>
     </div>
 </body>
