@@ -1,6 +1,8 @@
 package com.grelory.quickbill.controllers;
 
 import com.grelory.quickbill.services.AuthService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,7 @@ import java.util.Optional;
 
 @Controller
 @RequestMapping("/auth")
+@Tag(name = "Auth Controller", description = "APIs for authentication operations")
 public class AuthController {
 
     private final AuthService authService;
@@ -22,11 +25,13 @@ public class AuthController {
     }
 
     @GetMapping("/login")
+    @Operation(summary = "Get login page", description = "Retrieve the login page")
     public String login() {
         return "auth/login";
     }
 
     @PostMapping("/login")
+    @Operation(summary = "Post login credentials", description = "Verify credentials and return JWT token")
     public RedirectView postLogin(
             @RequestParam("email") String email,
             @RequestParam("password") String password,
@@ -45,6 +50,7 @@ public class AuthController {
     }
 
     @GetMapping("/logout")
+    @Operation(summary = "Logout", description = "Invalidate the JWT token and logout")
     public String logout(HttpServletResponse response) {
         Cookie cookie = new Cookie("jwt_token", null);
         cookie.setPath("/");
@@ -54,11 +60,13 @@ public class AuthController {
     }
 
     @GetMapping("/registration")
+    @Operation(summary = "Get registration page", description = "Retrieve the registration page")
     public String registration() {
         return "auth/registration";
     }
 
     @PostMapping("/registration")
+    @Operation(summary = "Post registration details", description = "Register a new user")
     public RedirectView postRegistration(
             @RequestParam("email") String email,
             @RequestParam("password") String password,
@@ -68,6 +76,7 @@ public class AuthController {
     }
 
     @GetMapping("/redirect/dashboard")
+    @Operation(summary = "Redirect to dashboard", description = "Redirect to the appropriate dashboard based on user role")
     public RedirectView redirectDashboard(@CookieValue("jwt_token") String token) {
         return authService.findUserByToken(token).map(user -> {
             if ("ADMIN".equals(user.getRole())) return new RedirectView("/admin/dashboard");
@@ -77,6 +86,7 @@ public class AuthController {
     }
 
     @GetMapping("/access-denied")
+    @Operation(summary = "Access denied page", description = "Display access denied message")
     public String accessDenied(Model model) {
         model.addAttribute("message", "Sorry, you have no access to see this page.");
         model.addAttribute("path", "main");
@@ -84,6 +94,7 @@ public class AuthController {
     }
 
     @GetMapping("/unauthorized")
+    @Operation(summary = "Unauthorized page", description = "Display unauthorized message")
     public String unauthorized(Model model) {
         model.addAttribute("message", "Sorry, you are not allowed to see this page. Please log in.");
         model.addAttribute("path", "login");
