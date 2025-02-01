@@ -5,10 +5,7 @@ import com.grelory.quickbill.services.TicketsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
@@ -26,7 +23,8 @@ public class AdminViewController {
     }
 
     @GetMapping("/dashboard")
-    public String dashboard(Model model) {
+    public String dashboard(@CookieValue("jwt_token") String token, Model model) {
+        model.addAttribute("name", "Admin");
         return "admin/dashboard";
     }
 
@@ -43,7 +41,7 @@ public class AdminViewController {
             @RequestParam("transport-type") String transportTypeName,
             @RequestParam("ticket-type") String ticketTypeName) {
         ticketsService.saveTicketToBuy(providerName, locationName, transportTypeName, ticketTypeName);
-        return new RedirectView("tickets");
+        return new RedirectView("/admin/tickets");
     }
 
     @GetMapping("/providers")
@@ -55,7 +53,7 @@ public class AdminViewController {
     @PostMapping("/providers")
     public RedirectView postProviders(@RequestParam("provider") String provider) {
         adminViewService.saveProvider(provider);
-        return new RedirectView("providers");
+        return new RedirectView("/admin/providers");
     }
 
     @GetMapping("/locations")
@@ -67,7 +65,7 @@ public class AdminViewController {
     @PostMapping("/locations")
     public RedirectView postLocations(@RequestParam("location") String location) {
         adminViewService.saveLocation(location);
-        return new RedirectView("locations");
+        return new RedirectView("/admin/locations");
     }
 
     @GetMapping("/transport")
@@ -79,7 +77,7 @@ public class AdminViewController {
     @PostMapping("/transport")
     public RedirectView postTransport(@RequestParam("transport-type") String transportType) {
         adminViewService.saveTransportType(transportType);
-        return new RedirectView("transport");
+        return new RedirectView("/admin/transport");
     }
 
     @GetMapping("/types")
@@ -95,6 +93,6 @@ public class AdminViewController {
             @RequestParam("interval-number") Integer ticketTypeExpiryNumber,
             @RequestParam("interval-name") String ticketTypeExpiryUnit) {
         adminViewService.saveTicketType(ticketType, ticketTypeExpiryNumber, ticketTypeExpiryUnit);
-        return new RedirectView("types");
+        return new RedirectView("/admin/types");
     }
 }

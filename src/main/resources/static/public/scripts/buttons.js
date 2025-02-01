@@ -1,6 +1,6 @@
 document.querySelectorAll('button.go-to-main').forEach(button => {
     button.addEventListener('click', () => {
-        window.location = '/'
+        window.location = '/auth/redirect/dashboard'
     })
 });
 

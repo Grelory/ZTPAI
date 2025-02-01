@@ -17,7 +17,7 @@
 </head>
 
 <body>
-    <?php include_once __DIR__ . '/../logo.html';?>
+    <div th:replace="~{logo.html}"></div>
     <div id="content" class="registration-form flex-ccc">
         <form class="registration-form flex-ccc flex-gap-010" action="/auth/registration" method="POST">
             <input type="text" id="userName" class="qb-input-1" name="userName" placeholder="Enter user name" required>

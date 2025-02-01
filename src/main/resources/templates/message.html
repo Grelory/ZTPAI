@@ -10,20 +10,20 @@
     <link rel="stylesheet" type="text/css" href="/public/css/qb-utils-flex.css">
     <link rel="stylesheet" type="text/css" href="/public/css/qb-utils-io.css">
     <link rel="stylesheet" type="text/css" href="/public/css/qb-utils.css">
-    
+
     <script src="/public/scripts/buttons.js" defer></script>
 
     <title>Message</title>
 </head>
 
 <body>
-    <?php include_once __DIR__ . '/logo.html';?>
-    <div id="content" class="flex-ccc">
-        <div id="message" class="message flex-ccc">
-            <div style="text-align: center;"><?= $message; ?></div>
-            <button class="go-to-<?= $path; ?> qb-button-1 m-top-010" type="button">Go Back</button>
-        </div>
+<div th:replace="~{logo.html}"></div>
+<div id="content" class="flex-ccc">
+    <div id="message" class="message flex-ccc">
+        <div style="text-align: center;" th:text="${message}"></div>
+        <button th:class="'go-to-' + ${path} + ' qb-button-1 m-top-010'" type="button">Go Back</button>
     </div>
+</div>
 </body>
 
 </html>

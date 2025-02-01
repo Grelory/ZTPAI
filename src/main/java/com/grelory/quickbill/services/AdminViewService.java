@@ -18,7 +18,6 @@ public class AdminViewService {
     private final ProvidersRepository providersRepository;
     private final TransportTypesRepository transportTypesRepository;
     private final TicketTypesRepository ticketTypesRepository;
-    private final TicketsToBuyRepository ticketsToBuyRepository;
 
     public AdminViewService(
             @Autowired LocationsRepository locationsRepository,
@@ -30,7 +29,6 @@ public class AdminViewService {
         this.providersRepository = providersRepository;
         this.transportTypesRepository = transportTypesRepository;
         this.ticketTypesRepository = ticketTypesRepository;
-        this.ticketsToBuyRepository = ticketsToBuyRepository;
     }
 
     public List<Location> allLocations() {
